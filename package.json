@@ -1,0 +1,14 @@
+{
+  "name": "emoji-datasource-ruby",
+  "version": "0.0.0",
+  "author": "Justas Palumickas <jpalumickas@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "emoji-datasource": "^6.0.0"
+  },
+  "scripts": {
+    "postinstall": "cp ./node_modules/emoji-datasource/emoji.json ./vendor/emoji-datasource/emoji.json"
+  }
+}

@@ -49,7 +49,7 @@ DEPENDENCIES
   emoji-datasource!
   rake (~> 13.0)
   rspec (~> 3.10)
-  rubocop (~> 1.2)
+  rubocop (~> 1.7)
 
 BUNDLED WITH
    2.2.3
