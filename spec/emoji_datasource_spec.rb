@@ -29,6 +29,16 @@ RSpec.describe EmojiDatasource do
         expect(described_class.short_name_to_char('heart::skin-tone-2')).to be_nil
       end
     end
+
+    context 'skin-tone emoji' do
+      it 'has to be nil for skin-tone-1' do
+        expect(described_class.short_name_to_char('skin-tone-1')).to be_nil
+      end
+
+      it 'has correct char for skin-tone-2' do
+        expect(described_class.short_name_to_char('skin-tone-2')).to eq('🏻')
+      end
+    end
   end
 
   describe '.find_by_short_name' do
