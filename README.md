@@ -45,9 +45,11 @@ implementations:
 * Ruby 2.5.0
 * Ruby 2.6.0
 * Ruby 2.7.0
+* Ruby 3.0.0
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License][license].
 
 [github_actions]: https://github.com/jpalumickas/emoji-datasource-ruby/actions
+[license]: https://raw.githubusercontent.com/jpalumickas/emoji-datasource-ruby/main/LICENSE
