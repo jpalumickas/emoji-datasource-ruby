@@ -6,12 +6,28 @@ RSpec.describe EmojiDatasource do
   end
 
   describe '.short_name_to_char' do
-    it 'has correct char for +1::skin-tone-2' do
-      expect(described_class.short_name_to_char('+1::skin-tone-2')).to eq('👍🏻')
+    context '+1 emoji' do
+      it 'has correct char for +1::skin-tone-2' do
+        expect(described_class.short_name_to_char('+1::skin-tone-2')).to eq('👍🏻')
+      end
+
+      it 'has correct char for +1::skin-tone-1' do
+        expect(described_class.short_name_to_char('+1::skin-tone-1')).to eq('👍')
+      end
+
+      it 'has correct char for +1' do
+        expect(described_class.short_name_to_char('+1')).to eq('👍')
+      end
     end
 
-    it 'has correct char for +1' do
-      expect(described_class.short_name_to_char('+1')).to eq('👍')
+    context 'heart emoji' do
+      it 'has correct char for heart' do
+        expect(described_class.short_name_to_char('heart')).to eq('❤️')
+      end
+
+      it 'has to be nil for heart::skin-tone-2' do
+        expect(described_class.short_name_to_char('heart::skin-tone-2')).to be_nil
+      end
     end
   end
 end
