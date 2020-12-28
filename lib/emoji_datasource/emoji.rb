@@ -12,6 +12,12 @@ module EmojiDatasource
       EmojiDatasource.unified_to_char(data[:unified])
     end
 
+    def skin_variations
+      return unless @data[:skin_variations]
+
+      @data[:skin_variations].transform_keys(&:to_s)
+    end
+
     def method_missing(method_name, *arguments, &block)
       if @data.key?(method_name)
         @data[method_name]

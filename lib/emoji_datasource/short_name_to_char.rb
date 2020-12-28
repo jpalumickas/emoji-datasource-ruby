@@ -18,6 +18,7 @@ module EmojiDatasource
 
       emoji = EmojiDatasource.find_by_short_name(skin_tone_matches[1])
       return unless emoji
+      return emoji.to_char if skin_tone_level == 1
 
       char_with_skin_tone(emoji)
     end
@@ -25,10 +26,12 @@ module EmojiDatasource
     private
 
     def char_with_skin_tone(emoji)
-      skin_variation = skin_tone_emoji && emoji.skin_variations[skin_tone_emoji.unified&.to_sym]
-      return EmojiDatasource.unified_to_char(skin_variation[:unified]) if skin_variation
+      return unless skin_tone_emoji
 
-      "#{emoji.to_char}#{skin_tone_emoji.to_char}"
+      skin_variation = emoji.skin_variations && emoji.skin_variations[skin_tone_emoji.unified]
+      return unless skin_variation
+
+      EmojiDatasource.unified_to_char(skin_variation[:unified])
     end
 
     def skin_tone_emoji
@@ -36,7 +39,7 @@ module EmojiDatasource
     end
 
     def skin_tone_level
-      skin_tone_matches[2]
+      skin_tone_matches[2].to_i
     end
 
     def skin_tone_matches

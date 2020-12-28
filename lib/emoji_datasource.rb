@@ -37,3 +37,6 @@ module EmojiDatasource
     @data ||= JSON.parse(File.read(EMOJI_DATA_PATH), symbolize_names: true)
   end
 end
+
+# Preload emojies on startup
+EmojiDatasource.data

@@ -31,10 +31,6 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
-Style/DoubleNegation:
-  Exclude:
-    - 'lib/mailerlite/utils.rb'
-
 Style/OptionalBooleanParameter:
   Enabled: false
 
@@ -45,3 +41,6 @@ Metrics/BlockLength:
 
 Lint/MissingSuper:
   Enabled: false
+
+Naming/FileName:
+  Exclude: 'lib/emoji-datasource.rb'
