@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require 'emoji_datasource'
+require 'emoji-datasource'
 require 'simplecov'
+
 SimpleCov.start
 
 RSpec.configure do |config|

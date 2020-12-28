@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in emoji_datasource.gemspec
+# Specify your gem's dependencies in emoji-datasource.gemspec
 gemspec
