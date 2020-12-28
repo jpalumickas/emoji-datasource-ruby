@@ -30,4 +30,16 @@ RSpec.describe EmojiDatasource do
       end
     end
   end
+
+  describe '.find_by_short_name' do
+    it 'has correct emoji for +1' do
+      expect(described_class.find_by_short_name('+1').name).to eq('THUMBS UP SIGN')
+    end
+  end
+
+  describe '.data' do
+    it 'has correct count' do
+      expect(described_class.data.length).to eq(1810)
+    end
+  end
 end
