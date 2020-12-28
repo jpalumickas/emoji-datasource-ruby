@@ -1,6 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.5
   NewCops: enable
+  SuggestExtensions: false
 
 Layout/ParameterAlignment:
   Enabled: true
@@ -43,4 +44,5 @@ Lint/MissingSuper:
   Enabled: false
 
 Naming/FileName:
-  Exclude: 'lib/emoji-datasource.rb'
+  Exclude:
+    - 'lib/emoji-datasource.rb'
