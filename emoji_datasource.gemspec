@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Justas Palumickas']
   spec.email         = ['jpalumickas@gmail.com']
 
-  spec.summary       = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
+  spec.summary       = 'Emoji data from emoji-datasource npm package'
+  spec.description   = 'Emoji data from emoji-datasource ' \
+                       '(https://github.com/iamcal/emoji-data) npm package'
   spec.homepage      = 'http://github.com/jpalumickas/emoji-datasource-ruby'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
