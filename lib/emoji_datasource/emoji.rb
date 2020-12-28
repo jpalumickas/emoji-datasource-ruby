@@ -31,5 +31,21 @@ module EmojiDatasource
 
       super
     end
+
+    def inspect
+      "#{self.class.name}:#{short_name}"
+    end
+
+    def to_s
+      to_char
+    end
+
+    def as_json
+      @data
+    end
+
+    def to_json(**args)
+      @data.to_json(**args)
+    end
   end
 end

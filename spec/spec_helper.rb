@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require 'emoji-datasource'
 require 'simplecov'
 
 SimpleCov.start
+
+require 'emoji-datasource'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

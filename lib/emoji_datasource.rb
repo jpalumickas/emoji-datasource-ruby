@@ -18,13 +18,9 @@ module EmojiDatasource
   def self.find_by_short_name(name)
     return unless name
 
-    item = data.detect do |emoji_data|
-      emoji_data[:short_name] == name || emoji_data[:short_names].include?(name)
+    data.detect do |emoji|
+      emoji.short_name == name || emoji.short_names.include?(name)
     end
-
-    return unless item
-
-    EmojiDatasource::Emoji.new(item)
   end
 
   def self.unified_to_char(unified_name)
@@ -35,6 +31,7 @@ module EmojiDatasource
 
   def self.data
     @data ||= JSON.parse(File.read(EMOJI_DATA_PATH), symbolize_names: true)
+      .map { |emoji_data| EmojiDatasource::Emoji.new(emoji_data) }
   end
 end
 
