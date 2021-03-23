@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-emoji-datasource@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/emoji-datasource/-/emoji-datasource-6.0.0.tgz#892e66f8cca001459f33279294a21f231d174b51"
-  integrity sha512-WIExctYO+Ji8MKdPWpQhP9GDUitslISCWFCrARGLX0w4cf9+iLG/n2DAZf6mIC8c+s2pVJ9CS+kdWRZYo9h8mg==
+emoji-datasource@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/emoji-datasource/-/emoji-datasource-6.0.1.tgz#0fd25101104cf16ddf36819237f4f174ec85a01f"
+  integrity sha512-kvkqTjdeXhVKwT2242jGhK18EpevORCTTBETDhByWOEVGwn5X+W5jvBioo+wrAnR7inUzydJ4gKUU5SQGjUG6A==
