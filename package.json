@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "emoji-datasource": "^7.0.0"
+    "emoji-datasource": "^7.0.2"
   },
   "scripts": {
     "postinstall": "cp ./node_modules/emoji-datasource/emoji.json ./vendor/emoji-datasource/emoji.json"
