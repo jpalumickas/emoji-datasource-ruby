@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/jpalumickas/emoji-datasource-ruby'
   spec.metadata['changelog_uri'] = 'https://github.com/jpalumickas/emoji-datasource-ruby/releases'
   spec.metadata['bug_tracker_uri'] = 'https://github.com/jpalumickas/emoji-datasource-ruby/issues'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -33,7 +34,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.10'
-  spec.add_development_dependency 'rubocop', '~> 1.16'
-  spec.add_development_dependency 'simplecov', '~> 0.21'
+  spec.add_development_dependency 'rspec', '~> 3.12'
+  spec.add_development_dependency 'rubocop', '~> 1.45'
+  spec.add_development_dependency 'simplecov', '~> 0.22'
 end
