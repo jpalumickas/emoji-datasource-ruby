@@ -7,37 +7,46 @@ jobs:
     name: Test
     strategy:
       matrix:
-        ruby: [2.5, 2.6, 2.7, 3.0, head]
+        ruby: [2.5, 2.6, 2.7, '3.0', 3.1, head]
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Set up Ruby ${{ matrix.ruby }}
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+
     - name: Install dependencies
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+
     - name: RSpec
       run: |
         bundle exec rspec
+
   rubocop:
     name: RuboCop
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: 3.1
+
     - name: Install dependencies
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+
     - name: RuboCop
       run: |
         bundle exec rubocop
