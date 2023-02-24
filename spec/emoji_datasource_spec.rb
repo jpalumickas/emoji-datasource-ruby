@@ -45,6 +45,62 @@ RSpec.describe EmojiDatasource do
     it 'has correct emoji for +1' do
       expect(described_class.find_by_short_name('+1').name).to eq('THUMBS UP SIGN')
     end
+
+    it 'finds emoji when code is surrounded by colons' do
+      expect(described_class.find_by_short_name(':+1:').name).to eq('THUMBS UP SIGN')
+    end
+
+    it 'finds emoji variant when skin tone is provided' do
+      expect(described_class.find_by_short_name(':+1::skin-tone-3:').unified).to eq('1F44D-1F3FC')
+    end
+
+    it 'does not find emoji when invalid skin tone passed' do
+      expect(described_class.find_by_short_name(':+1::skin-tone-7:')).to be_nil
+    end
+
+    it 'does not find emoji when some semicolons are missing' do
+      expect(described_class.find_by_short_name(':+1:skin-tone-2:')).to be_nil
+    end
+
+    it 'does not find emoji when skin tone variants used for an emoji that doesn\'t support it' do
+      expect(described_class.find_by_short_name(':hamsa::skin-tone-2:')).to be_nil
+    end
+  end
+
+  describe '.find_by_unified' do
+    it 'has correct emoji for thumbs up emoji' do
+      expect(described_class.find_by_unified('1F44D').to_char).to eq('👍')
+    end
+
+    it 'finds emoji variant when skin tone is provided' do
+      expect(described_class.find_by_unified('1F44D-1F3FC').to_char).to eq('👍🏼')
+    end
+
+    it 'doesn\'t find anything when non-emoji codepoint is provided' do
+      expect(described_class.find_by_unified('20')).to be_nil
+    end
+
+    it 'doesn\'t find anything when multiple emojis are provided' do
+      expect(described_class.find_by_unified('1F44D-1F44D-1F44D')).to be_nil
+    end
+  end
+
+  describe '.find_by_char' do
+    it 'has correct emoji for thumbs up emoji' do
+      expect(described_class.find_by_char('👍').name).to eq('THUMBS UP SIGN')
+    end
+
+    it 'finds emoji variant when skin tone is provided' do
+      expect(described_class.find_by_char('👍🏼').unified).to eq('1F44D-1F3FC')
+    end
+
+    it 'doesn\'t find anything when non-emoji codepoint is provided' do
+      expect(described_class.find_by_char('A')).to be_nil
+    end
+
+    it 'doesn\'t find anything when multiple emojis are provided' do
+      expect(described_class.find_by_char('👍👍👍')).to be_nil
+    end
   end
 
   describe '.data' do
