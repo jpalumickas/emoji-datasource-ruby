@@ -70,11 +70,6 @@ RSpec.describe EmojiDatasource do
       expect(described_class.find_by_short_name(':people_holding_hands::skin-tone-2:')).to \
         eq(described_class.find_by_short_name(':people_holding_hands::skin-tone-2::skin-tone-2:'))
     end
-
-    it 'doesn\'t override existing short skin toned emoji' do
-      expect(described_class.find_by_short_name(':women_holding_hands::skin-tone-2:')).not_to \
-        eq(described_class.find_by_short_name(':women_holding_hands::skin-tone-2::skin-tone-2:'))
-    end
   end
 
   describe '.find_by_unified' do

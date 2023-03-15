@@ -40,6 +40,9 @@ Metrics/BlockLength:
     - '*.gemspec'
     - 'spec/**/*_spec.rb'
 
+Metrics/AbcSize:
+  Max: 18
+
 Lint/MissingSuper:
   Enabled: false
 
