@@ -65,6 +65,16 @@ RSpec.describe EmojiDatasource do
     it 'does not find emoji when skin tone variants used for an emoji that doesn\'t support it' do
       expect(described_class.find_by_short_name(':hamsa::skin-tone-2:')).to be_nil
     end
+
+    it 'finds complex emoji with multiple equal skin tones by single skin tone' do
+      expect(described_class.find_by_short_name(':people_holding_hands::skin-tone-2:')).to \
+        eq(described_class.find_by_short_name(':people_holding_hands::skin-tone-2::skin-tone-2:'))
+    end
+
+    it 'doesn\'t override existing short skin toned emoji' do
+      expect(described_class.find_by_short_name(':women_holding_hands::skin-tone-2:')).not_to \
+        eq(described_class.find_by_short_name(':women_holding_hands::skin-tone-2::skin-tone-2:'))
+    end
   end
 
   describe '.find_by_unified' do

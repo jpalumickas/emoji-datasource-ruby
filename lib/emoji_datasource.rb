@@ -73,7 +73,18 @@ module EmojiDatasource
     @short_name_lookup_map ||= data.each_with_object({}) do |emoji, result|
       emoji.short_names.each { |short_name| result[short_name] = emoji }
       emoji.variations.each do |emoji_variant|
-        emoji_variant.short_names.each { |short_name| result[short_name] = emoji_variant }
+        emoji_variant.short_names.each do |short_name|
+          result[short_name] = emoji_variant
+
+          # Allow to find complex emojis with multiple equal skin tone codes by single skin tone
+          # For some emojis (like :women_holding_hands:) there are already special single skin tone emojis exists.
+          # but for others (like :people_holding_hands:) there are no such versions, only versions with separate tones.
+          # However, some implementations in the wild (e.g. Slack and EmojiMart) understand short codes
+          # containing only single skin tone (e.g. `:people_holding_hands::skin-tone-N:`)
+          if short_name =~ /skin-tone-(\d)(?:::skin-tone-\1)+/ # repeated skin tone, e.g. `skin-tone-2::skin-tone-2`
+            result["#{emoji.short_name}::skin-tone-#{$1}"] ||= emoji_variant
+          end
+        end
       end
     end
   end
