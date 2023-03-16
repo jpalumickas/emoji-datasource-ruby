@@ -73,7 +73,9 @@ module EmojiDatasource
     @short_name_lookup_map ||= data.each_with_object({}) do |emoji, result|
       emoji.short_names.each { |short_name| result[short_name] = emoji }
       emoji.variations.each do |emoji_variant|
-        emoji_variant.short_names.each { |short_name| result[short_name] = emoji_variant }
+        emoji_variant.short_names.each do |short_name|
+          result[short_name] = emoji_variant
+        end
       end
     end
   end

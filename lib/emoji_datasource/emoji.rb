@@ -33,8 +33,19 @@ module EmojiDatasource
     def short_names
       return @data['short_names'] unless @variation
 
-      @data['short_names'].map do |short_name|
-        "#{short_name}::#{variation_emojis.map(&:short_name).join('::')}"
+      @short_names ||= @data['short_names'].flat_map do |short_name|
+        full_short_name = "#{short_name}::#{variation_emojis.map(&:short_name).join('::')}"
+
+        # Allow to find complex emojis with multiple equal skin tone codes by single skin tone
+        # For some emojis (like :women_holding_hands:) there are special single skin tone emojis.
+        # but for others (like :people_holding_hands:) there are no such versions.
+        # However, some implementations in the wild (e.g. Slack and EmojiMart) understand codes
+        # containing only single skin tone (e.g. `:people_holding_hands::skin-tone-N:`)
+        if variation_emojis.size > 1 && variation_emojis.uniq.size == 1
+          abbr_short_name = "#{short_name}::#{variation_emojis.first.short_name}"
+        end
+
+        [full_short_name, abbr_short_name].compact
       end
     end
 
@@ -90,7 +101,7 @@ module EmojiDatasource
     def variation_emojis
       return [] unless @variation
 
-      @variation.split('-').map do |unified|
+      @variation_emojis ||= @variation.split('-').map do |unified|
         EmojiDatasource.find_by_unified(unified)
       end
     end
