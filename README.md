@@ -71,6 +71,7 @@ implementations:
 * Ruby 3.2.0
 * Ruby 3.3.0
 * Ruby 3.4.0
+* Ruby 4.0.0
 
 ## License
 

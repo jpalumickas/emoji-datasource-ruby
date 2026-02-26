@@ -110,7 +110,7 @@ RSpec.describe EmojiDatasource do
 
   describe '.data' do
     it 'has correct count' do
-      expect(described_class.data.length).to eq(1854)
+      expect(described_class.data.length).to eq(1911)
     end
   end
 end
